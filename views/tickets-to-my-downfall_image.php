@@ -1,0 +1,1 @@
+<img style="width: 500px;" src="/images/tickets-to-my-downfall.png" alt="Tickets To My Downfall cover">
