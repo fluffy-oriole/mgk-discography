@@ -1,47 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"  rel="stylesheet">
-</head>
-<body>
-    <nav class="navbar navbar-expand-lg bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#"><i class="fa-brands fa-napster"></i></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Главная</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/tickets-to-my-downfall">Tickets To My Downfall</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/lost-americana">Lost Americana</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-<div class="container mt-3">
-    <?php 
+  <?php 
+    require_once '../vendor/autoload.php';
+    $loader = new \Twig\Loader\FilesystemLoader('../views');
+    $twig = new \Twig\Environment($loader);
     $url = $_SERVER["REQUEST_URI"];
 
+    $url = $_SERVER["REQUEST_URI"];
+
+    $title = "";
+    $template = "";
+    $context = [];
+
     if ($url == "/") {
-        require "../views/main.php";
+      $title = "Главная";  
+      $template = "main.twig";
     } elseif (preg_match("#^/tickets-to-my-downfall#", $url)) {
-        require "../views/tickets-to-my-downfall.php";
+        $title = "Tickets To My Downfall";
+        $template = "object.twig";
+        $context["url_title"] = "tickets-to-my-downfall";
+
+        $is_info = $url == "/tickets-to-my-downfall/info";
+        $is_image = $url == "/tickets-to-my-downfall/image";
+        $context["is_info"] = $is_info;
+        $context["is_image"] = $is_image;
+
+        $context["image_url"] = "/images/tickets-to-my-downfall.png";
+
+        if ($is_image) {
+          $template = "object_image.twig";
+        }
+        else if ($is_info) {
+          $template = "tickets-to-my-downfall-info.twig";
+        }
+
     } elseif (preg_match("#^/lost-americana#", $url)) {
-        require "../views/lost-americana.php";
-    } 
-    ?>
-</div>
-</body>
-</html>
+        $title = "Lost Americana";
+        $template = "object.twig";
+        $context["url_title"] = "lost-americana";
+
+        $is_info = $url == "/lost-americana/info";
+        $is_image = $url == "/lost-americana/image";
+        $context["is_info"] = $is_info;
+        $context["is_image"] = $is_image;
+
+        $context["image_url"] = "/images/lost-americana.jpg";
+
+        if ($is_image) {
+          $template = "object_image.twig";
+        }
+        else if ($is_info) {
+          $template = "lost-americana-info.twig";
+        }
+    }
+    $context["title"] = $title;
+    echo $twig->render($template, $context);

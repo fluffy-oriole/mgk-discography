@@ -8,10 +8,10 @@
 <div class="container mt-3">
     <ul class="nav nav-pills">
         <li class="nav-item">
-            <a class="nav-link <?= $is_image ? "active" : '' ?>" aria-current="page" href="/lost-americana/image">Картинка</a>
+            <a class="nav-link" aria-current="page" href="/lost-americana/image">Картинка</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link <?= $is_info ? "active" : '' ?>" href="/lost-americana/info">Описание</a>
+            <a class="nav-link" href="/lost-americana/info">Описание</a>
         </li>
     </ul>
 </div>
