@@ -25,16 +25,16 @@
       $controller = new MainController($twig);
     } else if (preg_match("#^/tickets-to-my-downfall/image#", $url)) {
       $controller = new TicketsToMyDownfallImageController($twig);
-    } elseif (preg_match("#^/tickets-to-my-downfall#", $url)) {
+    } elseif (preg_match("#^/tickets-to-my-downfall/info#", $url)) {
       $controller = new TicketsToMyDownfallInfoController($twig);
     } elseif (preg_match("#^/tickets-to-my-downfall#", $url)) {
         $controller = new TicketsToMyDownfallController($twig);
     } elseif (preg_match("#^/lost-americana/image#", $url)) {
         $controller = new LostAmericanaImageController($twig);
     } elseif (preg_match("#^/lost-americana/info#", $url)) {
-          $controller = new LostAmericanaInfoController($twig);
+        $controller = new LostAmericanaInfoController($twig);
     } elseif (preg_match("#^/lost-americana#", $url)) {    
-          $controller = new LostAmericanaController($twig);
+        $controller = new LostAmericanaController($twig);
     }
     $context["title"] = $title;
     if ($controller) {

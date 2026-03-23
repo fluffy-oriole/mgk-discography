@@ -1,0 +1,3 @@
+{% macro btn(text, url, is_warning, warning) %}
+        <a href="{{ url }}" class="btn {{ is_warning ? (warning is null ? "btn-primary" : warning) : "btn-link" }}">{{ text }}</a>
+{% endmacro %}

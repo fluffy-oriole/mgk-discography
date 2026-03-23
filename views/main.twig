@@ -1,17 +1,12 @@
 {% extends "__layout.twig"  %}
+{% import "forms.twig" as forms %}
 
 {% block content %}
 <h1>Дискография</h1>
 <ul class="list-group mt-3">
+    {% include 'list_item.twig' with {title: "Tickets To My Downfall", url_title: "tickets-to-my-downfall"} %}
     <li class="list-group-item">
-        <a type="a" class="btn btn-primary" href="/tickets-to-my-downfall">Tickets To My Downfall</a>
-        <a type="a" class="btn btn-link" href="/tickets-to-my-downfall/image">Картинка</a>
-        <a type="a" class="btn btn-link" href="/tickets-to-my-downfall/info">Описание</a>
-    </li>
-    <li class="list-group-item">
-        <a type="a" class="btn btn-primary" href="/lost-americana">Lost Americana</a>
-        <a type="a" class="btn btn-link" href="/lost-americana/image">Картинка</a>
-        <a type="a" class="btn btn-link" href="/lost-americana/info">Описание</a>
+        {% include 'list_item.twig' with {title: "Lost Americana", url_title: "lost-americana"} %}
     </li>
 </ul>
 {% endblock %}

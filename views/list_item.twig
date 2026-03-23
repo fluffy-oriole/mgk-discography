@@ -1,0 +1,6 @@
+{% import "forms.twig" as forms %}
+<li class="list-group-item">
+    {{ forms.btn(title, "/#{url_title}", true) }}
+    {{ forms.btn('Картинка', "/#{url_title}/image", false) }}
+    {{ forms.btn('Описание', "/#{url_title}/info", false) }}
+</li>
