@@ -7,6 +7,7 @@
     <title>{{ title }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"  rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-light">
@@ -20,19 +21,18 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/">Главная</a>
         </li>
+        {% for type in types %}
         <li class="nav-item">
-          <a class="nav-link" href="/tickets-to-my-downfall">Tickets To My Downfall</a>
+          <a class="nav-link" href="/?type={{ type.type }}">{{ type.type|title }}</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/lost-americana">Lost Americana</a>
-        </li>
+        {% endfor %}
       </ul>
     </div>
   </div>
 </nav>
-<div class="container mt-3">
-    {% block content %}
-    {% endblock %}
+<div class="mt-3 container">
+  {% block content %}
+  {% endblock %}
 </div>
 </body>
 </html>

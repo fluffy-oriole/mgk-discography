@@ -3,18 +3,17 @@
 {% block content %}
 <h1>{{ title }}</h1>
 <div class="container mt-3">
+    <p>{{ description }}</p>
     <ul class="nav nav-pills">
         <li class="nav-item">
-            {{ forms.btn("Картинка", "/#{url_title}/image", true, (is_image ? "nav-link active")) }}
+            {{ forms.btn("Картинка", "/album/#{id}/image", true, (is_image ? "nav-link active")) }}
         </li>
         <li class="nav-item ml-2" style="margin-left: 10px;">
-            {{ forms.btn("Описание", "/#{url_title}/info", true, (is_info ? "nav-link active")) }}
+            {{ forms.btn("Описание", "/album/#{id}/info", true, (is_info ? "nav-link active")) }}
         </li>
     </ul>
 </div>
-
 <div class="container mt-3 p-3" style="border: 1px solid grey;">
     {% block objectContent %}{% endblock %}
 </div>
-
 {% endblock %}

@@ -2,11 +2,9 @@
 {% import "forms.twig" as forms %}
 
 {% block content %}
-<h1>Дискография</h1>
-<ul class="list-group mt-3">
-    {% include 'list_item.twig' with {title: "Tickets To My Downfall", url_title: "tickets-to-my-downfall"} %}
-    <li class="list-group-item">
-        {% include 'list_item.twig' with {title: "Lost Americana", url_title: "lost-americana"} %}
-    </li>
+<ul class="row g-5" style="text-align: center;">
+    {% for album in albums %}
+        {% include 'list_item.twig' with {title: album.name, url_title: album.name, id: album.id} %}
+    {% endfor %}
 </ul>
 {% endblock %}
