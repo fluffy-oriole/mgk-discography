@@ -1,4 +1,4 @@
 {% macro btn(text, url, is_warning, warning) %}
         <a href="{{ url }}" class="btn {{ is_warning ? (warning is null ? "btn-primary" : warning) : "btn-link" }}"
-        style="{% if is_warning %}width: 100%;{% endif %} margin-top: 10px;">{{ text }}</a>
+        style="{% if is_warning %}width: 100%;{% endif %}">{{ text }}</a>
 {% endmacro %}

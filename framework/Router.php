@@ -52,7 +52,6 @@ class Router {
             }
         }
 
-
         $controllerInstance = new $controller();
 
         $controllerInstance->setPDO($this->pdo);

@@ -1,7 +1,7 @@
 {% import "forms.twig" as forms %}
 <li class="list-group-item col" style="border: 1px solid rgb(200, 200, 200); padding: 15px; border-radius: 10px; margin-right: 30px;">
     <img src="{{ album.image }}" style="width: 200px; padding: 5px; border: 1px solid rgb(200, 200, 200); border-radius: 10px;">
-    {{ forms.btn(album.name, "/album/#{album.id}", true) }} <br>
-    {{ forms.btn('Картинка', "/album/#{album.id}/image", false) }}
-    {{ forms.btn('Описание', "/album/#{album.id}/info", false) }}
+    <div style="margin-top: 10px;">{{ forms.btn(album.name, "/album/#{album.id}", true) }}</div>
+    {{ forms.btn('Картинка', "/album/#{album.id}/?show=image", false) }}
+    {{ forms.btn('Описание', "/album/#{album.id}/?show=info", false) }}
 </li>

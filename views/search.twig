@@ -1,0 +1,44 @@
+{% extends "__layout.twig" %}
+{% import "forms.twig" as forms %}
+
+{% block content %}
+<h1>Поиск</h1>
+<form action="">
+    <div class="row g-3 align-items-end">
+        <div class="col">
+            <label for="selectType" class="form-label">Тип</label>
+            <select name="type" class="form-control">
+                <option value="">Все</option>
+                <option value="рок">Рок альбомы</option>
+                <option value="реп">Реп альбомы</option>
+            </select>
+        </div>
+        <div class="col">
+            <label for="name" class="form-label">Имя</label>
+            <input type="text" class="form-control" name="name">
+        </div>
+        <div class="col">
+            <label for="name" class="form-label">Описание</label>
+            <input type="text" class="form-control" name="description">
+            
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary">Найти</button>
+        </div>
+    </div>
+</form>
+
+<table class="mt-3" style="border: 1px solid rgb(200, 200, 200); width: 100%;">
+    <tbody>
+        {% for album in objects %}
+            <tr style="border: 1px solid rgb(200, 200, 200);">
+                <td>
+                    {{ forms.btn(album.name, "/album/#{album.id}", false) }}
+                </td>
+            </tr>
+        {% endfor %} 
+    </tbody>
+</table>
+
+
+{% endblock %}

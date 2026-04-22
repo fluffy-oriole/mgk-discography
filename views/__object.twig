@@ -6,10 +6,10 @@
     <p>{{ description }}</p>
     <ul class="nav nav-pills">
         <li class="nav-item">
-            {{ forms.btn("Картинка", "/album/#{id}/image", true, (is_image ? "nav-link active")) }}
+            {{ forms.btn("Картинка", "/album/#{id}/?show=image", true, (is_image ? "nav-link active")) }}
         </li>
         <li class="nav-item ml-2" style="margin-left: 10px;">
-            {{ forms.btn("Описание", "/album/#{id}/info", true, (is_info ? "nav-link active")) }}
+            {{ forms.btn("Описание", "/album/#{id}/?show=info", true, (is_info ? "nav-link active")) }}
         </li>
     </ul>
 </div>
