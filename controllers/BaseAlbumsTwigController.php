@@ -5,7 +5,7 @@ class BaseAlbumsTwigController extends TwigBaseController {
     {
         $context = parent::getContext();
 
-        $query = $this->pdo->query("SELECT DISTINCT type FROM albums");
+        $query = $this->pdo->query("SELECT * FROM object_types");
         $types = $query->fetchAll();
         $context['types'] = $types;
         return $context;

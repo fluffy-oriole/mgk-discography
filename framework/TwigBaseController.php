@@ -17,8 +17,7 @@ class TwigBaseController extends BaseController {
         return $context;
     }
 
-    public function get() {
-        $context = $this->getContext();
+    public function get(array $context) {
         echo $this->twig->render($this->template, $context);
     }
 }
