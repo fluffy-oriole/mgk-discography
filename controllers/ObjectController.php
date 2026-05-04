@@ -14,9 +14,12 @@ class ObjectController extends BaseAlbumsTwigController {
 
         $context['id'] = $this->params['id'];
         $context['description'] = $data['description'];
-        
+        $context["my_session_message"] = isset($_SESSION['welcome_message']) ? $_SESSION['welcome_message'] : "";
+        $context["messages"] = isset($_SESSION['messages']) ? $_SESSION['messages'] : "";        
+
+
         if(isset($_GET["show"])) {
-            if ($_GET["show"] == "image") { 
+            if ($_GET["show"] == "image") {
             $context['image'] = $data['image'];
             $context["is_image"] = true;
             $this->template = "object_image.twig";
