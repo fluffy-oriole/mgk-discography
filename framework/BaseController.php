@@ -12,6 +12,11 @@ abstract class BaseController {
             $_SESSION['pages'] = [];
         }
         array_push($_SESSION['pages'], $url);
+        
+        if (count($_SESSION['pages']) > 10) {
+            array_shift($_SESSION['pages']);
+        }
+        
         $context['pages'] = $_SESSION['pages'];
         
 
