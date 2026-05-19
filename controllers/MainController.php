@@ -8,7 +8,7 @@ class MainController extends BaseAlbumsTwigController {
     public function getContext(): array {
         $context = parent::getContext();
         if (isset($_GET["type"])) {
-            $query = $this->pdo->prepare("SELECT * FROM albums WHERE type = :type");
+            $query = $this->pdo->prepare("SELECT * FROM albums JOIN object_types ON albums.type_id = object_types.id WHERE object_types.type_name = :type");
             $query->bindValue("type", $_GET["type"]);
             $query->execute();
         }

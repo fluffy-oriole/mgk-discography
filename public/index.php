@@ -12,7 +12,9 @@
     require_once "../controllers/SetWelcomeController.php";
     require_once "../controllers/LoginController.php";
     require_once "../controllers/LogoutController.php";
+    require_once "../controllers/ObjectTypeCreateController.php";
     require_once "../middlewares/LoginRequiredMiddlewares.php";
+    
     
     session_set_cookie_params(60 * 60 * 10);
     session_start();
@@ -40,6 +42,8 @@
     $router->add("/set-welcome/", SetWelcomeController::class)
            ->middleware(new LoginRequiredMiddleware());
     $router->add("/logout", LogoutController::class)
+           ->middleware(new LoginRequiredMiddleware());
+    $router->add("/add-object-type", ObjectTypeCreateController::class)
            ->middleware(new LoginRequiredMiddleware());
     $router->add("/login", LoginController::class);
     $router->get_or_default(Controller404::class);

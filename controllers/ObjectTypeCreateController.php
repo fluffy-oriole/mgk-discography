@@ -1,8 +1,8 @@
 <?php
 require_once "BaseAlbumsTwigController.php";
 
-class AlbumObjectCreateController extends BaseAlbumsTwigController {
-    public $template = "album_object_create.twig";
+class ObjectTypeCreateController extends BaseAlbumsTwigController {
+    public $template = "object_type_create.twig";
 
     public function get($context)
     {
@@ -10,10 +10,8 @@ class AlbumObjectCreateController extends BaseAlbumsTwigController {
     }
 
     public function post($context) {
-        $title = $_POST['title'];
-        $description = $_POST['description'];
-        $type = $_POST['type'];
-        $info = $_POST['info'];
+        
+        $title = $_POST['type_name'];
 
         $tmp_name = $_FILES['image']['tmp_name'];
         $name =  $_FILES['image']['name'];
@@ -21,17 +19,14 @@ class AlbumObjectCreateController extends BaseAlbumsTwigController {
         $image_url = "/media/$name";
 
         $sql = <<<EOL
-        INSERT INTO albums (name, description, type_id, info, image)
-        VALUES(:title, :description, :type, :info, :image_url)
+        INSERT INTO object_types (type_name, type_image)
+        VALUES(:type_name, :image_url)
         EOL;
 
 
         $query = $this->pdo->prepare($sql);
 
-        $query->bindValue("title", $title);
-        $query->bindValue("description", $description);
-        $query->bindValue("type", $type);
-        $query->bindValue("info", $info);
+        $query->bindValue("type_name", $title);
         $query->bindValue("image_url", $image_url);
         $query->execute();
         
@@ -39,5 +34,6 @@ class AlbumObjectCreateController extends BaseAlbumsTwigController {
         $context['id'] = $this->pdo->lastInsertId();
 
         $this->get($context);
+        
     }
 }

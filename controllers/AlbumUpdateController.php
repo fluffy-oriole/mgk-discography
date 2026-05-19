@@ -37,13 +37,13 @@ class AlbumUpdateController extends BaseAlbumsTwigController {
         if ($_FILES['image']['tmp_name'] != '') {
             $sql = <<<EOL
             UPDATE albums SET name=:title, description=:description,
-            type=:type, info=:info, image=:image_url WHERE id=:id
+            type_id=:type, info=:info, image=:image_url WHERE id=:id
             EOL;
         }
         else {
             $sql = <<<EOL
             UPDATE albums SET name=:title, description=:description,
-            type=:type, info=:info WHERE id=:id
+            type_id=:type, info=:info WHERE id=:id
             EOL;
         }
         

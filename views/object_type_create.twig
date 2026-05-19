@@ -1,0 +1,23 @@
+{% extends "__layout.twig" %}
+{% block content %}
+
+    <form action="/" enctype="multipart/form-data" method="POST" class="container" style="
+            width: 1000px;
+            height: 50px;
+            
+            margin-top: 20px;
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+            ">
+            <h1>Добавление нового типа объектов</h1>
+            <div class="form-group mb-3">
+                <label for="exampleInputEmail1">Название</label>
+                <input type="text" class="form-control" name="type_name" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3">
+            <label for="formFile" class="form-label">Изображение</label>
+            <input class="form-control" type="file" id="formFile" name="image">
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100px; margin-left: auto; margin-right: auto;">Добавить</button>
+    </form>
+{% endblock %}

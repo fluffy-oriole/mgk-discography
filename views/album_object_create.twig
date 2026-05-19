@@ -23,7 +23,7 @@
             <label class="form-label">Тип</label>
             <select class="form-control" name="type">
                 {% for type in types %}
-                    <option value="{{type.name}}">{{type.name}}</option>
+                    <option value="{{type.id}}">{{type.type_name}}</option>
                 {% endfor %}
             </select>
         </div>
