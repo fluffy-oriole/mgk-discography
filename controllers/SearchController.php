@@ -15,7 +15,7 @@ class SearchController extends BaseAlbumsTwigController {
         SELECT id, name, description
         FROM albums
         WHERE (:name = '' OR name like CONCAT('%', :name, '%'))
-        AND (:type = '' OR type = :type)
+        AND (:type = '' OR type_id = :type)
         AND (:description = '' OR description = :description)
         EOL;
 

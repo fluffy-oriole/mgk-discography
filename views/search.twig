@@ -9,8 +9,9 @@
             <label for="selectType" class="form-label">Тип</label>
             <select name="type" class="form-control">
                 <option value="">Все</option>
-                <option value="рок">Рок альбомы</option>
-                <option value="реп">Реп альбомы</option>
+                {% for type in types %}
+                    <option value="{{type.id}}">{{type.type_name}}</option>
+                {% endfor %}
             </select>
         </div>
         <div class="col">
