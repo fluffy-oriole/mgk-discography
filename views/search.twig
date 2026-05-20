@@ -10,17 +10,17 @@
             <select name="type" class="form-control">
                 <option value="">Все</option>
                 {% for type in types %}
-                    <option value="{{type.id}}">{{type.type_name}}</option>
+                    <option value="{{type.id}}" {% if search_type == type.id %}selected{% endif %}>{{type.type_name}}</option>
                 {% endfor %}
             </select>
         </div>
         <div class="col">
             <label for="name" class="form-label">Имя</label>
-            <input type="text" class="form-control" name="name">
+            <input type="text" class="form-control" name="name" value="{{ search_name }}">
         </div>
         <div class="col">
             <label for="name" class="form-label">Описание</label>
-            <input type="text" class="form-control" name="description">
+            <input type="text" class="form-control" name="description" value="{{ search_description }}">
             
         </div>
         <div class="col-auto">

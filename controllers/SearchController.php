@@ -6,11 +6,14 @@ class SearchController extends BaseAlbumsTwigController {
     public function getContext(): array {
     
         $context = parent::getContext();
-
-
         $type = (isset($_GET["type"]) ? $_GET["type"] :"");
         $name = (isset($_GET["name"]) ? $_GET["name"] :"");
         $description = (isset($_GET["description"]) ? $_GET["description"] :"");
+
+        $context['search_type'] = $type;
+        $context['search_name'] = $name;
+        $context['search_description'] = $description;
+
         $sql = <<<EOL
         SELECT id, name, description
         FROM albums
