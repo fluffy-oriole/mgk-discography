@@ -14,6 +14,7 @@
     require_once "../controllers/LogoutController.php";
     require_once "../controllers/ObjectTypeCreateController.php";
     require_once "../middlewares/LoginRequiredMiddlewares.php";
+    require_once "../middlewares/PagesHistoryMiddleware.php";
     
     
     session_set_cookie_params(60 * 60 * 10);
@@ -28,22 +29,31 @@
 
     $router = new Router($twig, $pdo);
     $router->add("/", MainController::class)
-           ->middleware(new LoginRequiredMiddleware());
+           ->middleware(new LoginRequiredMiddleware())
+           ->middleware(new PagesHistoryMiddleware());
     $router->add("/album/(?P<id>\d+)/?$", ObjectController::class)
-           ->middleware(new LoginRequiredMiddleware());
+           ->middleware(new LoginRequiredMiddleware())
+           ->middleware(new PagesHistoryMiddleware());
     $router->add("/search", SearchController::class)
-           ->middleware(new LoginRequiredMiddleware());
+           ->middleware(new LoginRequiredMiddleware())
+           ->middleware(new PagesHistoryMiddleware());
     $router->add("/album-object/create", AlbumObjectCreateController::class)
-           ->middleware(new LoginRequiredMiddleware());
+           ->middleware(new LoginRequiredMiddleware())
+           ->middleware(new PagesHistoryMiddleware());
     $router->add("/album/(?P<id>\d+)/delete", AlbumDeleteController::class)
-           ->middleware(new LoginRequiredMiddleware());
+           ->middleware(new LoginRequiredMiddleware())
+           ->middleware(new PagesHistoryMiddleware());
     $router->add("/album/(?P<id>\d+)/edit", AlbumUpdateController::class)
-           ->middleware(new LoginRequiredMiddleware());
+           ->middleware(new LoginRequiredMiddleware())
+           ->middleware(new PagesHistoryMiddleware());
     $router->add("/set-welcome/", SetWelcomeController::class)
-           ->middleware(new LoginRequiredMiddleware());
+           ->middleware(new LoginRequiredMiddleware())
+           ->middleware(new PagesHistoryMiddleware());
     $router->add("/logout", LogoutController::class)
-           ->middleware(new LoginRequiredMiddleware());
+           ->middleware(new LoginRequiredMiddleware())
+           ->middleware(new PagesHistoryMiddleware());
     $router->add("/add-object-type", ObjectTypeCreateController::class)
-           ->middleware(new LoginRequiredMiddleware());
+           ->middleware(new LoginRequiredMiddleware())
+           ->middleware(new PagesHistoryMiddleware());
     $router->add("/login", LoginController::class);
     $router->get_or_default(Controller404::class);

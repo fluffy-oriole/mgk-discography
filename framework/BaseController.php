@@ -8,18 +8,8 @@ abstract class BaseController {
         $method = $_SERVER['REQUEST_METHOD'];
         $context = $this->getContext();
 
-        if (!isset($_SESSION['pages'])) {
-            $_SESSION['pages'] = [];
-        }
-        array_push($_SESSION['pages'], $url);
-        
-        if (count($_SESSION['pages']) > 10) {
-            array_shift($_SESSION['pages']);
-        }
-        
         $context['pages'] = $_SESSION['pages'];
         
-
         if ($method == 'GET') {
             $this->get($context);
         } else if ($method == 'POST') {
