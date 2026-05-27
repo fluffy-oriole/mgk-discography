@@ -8,7 +8,7 @@ abstract class BaseController {
         $method = $_SERVER['REQUEST_METHOD'];
         $context = $this->getContext();
 
-        $context['pages'] = $_SESSION['pages'];
+        $context['pages'] = isset($_SESSION['pages']) ? $_SESSION['pages'] : [];;
         
         if ($method == 'GET') {
             $this->get($context);
